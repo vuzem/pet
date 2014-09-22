@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by XMLSpy 2007 Enterprise Ed., Installed for 20 users (with SMP from 2006-11-12 to 2008-11-12) (Oesterreichische Nationalbank / ITO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:exdi="http://exdi.ecb.int" targetNamespace="http://exdi.ecb.int" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Request header meta data   -->
+	<xs:complexType name="metadataType">
+		<xs:sequence>
+			<xs:element name="processGroup" type="xs:string" nillable="false"/>
+			<xs:element name="processName" type="xs:string" nillable="false"/>
+			<xs:element name="applReqID" type="xs:string" nillable="false"/>
+			<xs:element name="correlationID" type="xs:string" minOccurs="0"/>
+			<xs:element name="sender" type="xs:string" minOccurs="0"/>
+			<xs:element name="receiver" type="xs:string" minOccurs="0"/>
+			<xs:element name="documentVersion" type="xs:string" minOccurs="0"/>
+			<xs:element name="typeFlag" type="xs:string" minOccurs="0"/>
+			<xs:element name="property1_Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property1_Value" type="xs:string" minOccurs="0"/>
+			<xs:element name="property2_Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property2_Value" type="xs:string" minOccurs="0"/>
+			<xs:element name="property3_Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property3_Value" type="xs:string" minOccurs="0"/>
+			<xs:element name="property4_Name" type="xs:string" minOccurs="0"/>
+			<xs:element name="property4_Value" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="metadata">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="exdi:metadataType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!-- Response header meta data -->
+	<!-- 
+	<xs:complexType name="metadataResponse">
+		<xs:sequence>
+			<xs:element name="metadata">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="timestamp" minOccurs="1" maxOccurs="1" type="xs:string"/>
+						<xs:element name="processGroup" minOccurs="1" maxOccurs="1" type="xs:string"/>
+						<xs:element name="processName" minOccurs="1" maxOccurs="1" type="xs:string"/>
+						<xs:element name="applReqID" minOccurs="1" maxOccurs="1" type="xs:string"/>
+						<xs:element name="correlationID" minOccurs="0" maxOccurs="1" type="xs:string"/>
+					</xs:all>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	-->
+	<!--  Response body part  -->
+	<!-- 
+	<xs:element name="processingResponse">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="timeStamp" type="xs:string" minOccurs="1"/>
+				<xs:element name="processStatus" type="xs:string" minOccurs="1"/>
+				<xs:element name="responseMessage" type="xs:string" minOccurs="1"/>
+				<xs:element name="applReqID" type="xs:string" minOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	-->
+	<xs:complexType name="processingResponseType">
+		<xs:all>
+			<xs:element name="timeStamp" type="xs:string"/>
+			<xs:element name="processStatus" type="xs:string"/>
+			<xs:element name="responseMessage" type="xs:string"/>
+			<xs:element name="applReqID" type="xs:string"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:element name="processingResponse">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="exdi:processingResponseType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--  SOAP Body  -->
+	<xs:complexType name="document"/>
+</xs:schema>

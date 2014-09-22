@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>test.pet</groupId>
+		<artifactId>pet-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<artifactId>pet-ejb</artifactId>
+	<build>
+		<plugins>
+			<!-- jaxb -->
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.3</version>
+				<configuration>
+					<schemaDirectory>src/main/resources/META-INF/xsd</schemaDirectory>
+					<schemaIncludes>
+						<include>*.xsd</include>
+					</schemaIncludes>
+					<!-- <generateDirectory>src/main/java</generateDirectory> -->
+					<generatePackage>ecb.top.gateway.xml.generated</generatePackage>
+					<episode>false</episode>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- for manual generation, instead during the default lifecycle phase 
+							'generate sources' -->
+						<!-- <phase>none</phase> -->
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
