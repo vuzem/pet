@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/pages/templates/common.xhtml">
+		<ui:define name="header">create</ui:define>
+		<ui:define name="content">
+		
+			<f:view>
+				<h:form>
+					<h:outputText value="#{petController.name}" />
+					<h:commandButton action="#{petController.actionCreate()}" value="create pet" />
+				</h:form>
+			</f:view>
+		
+		</ui:define>
+	</ui:composition>
+
+</html>
