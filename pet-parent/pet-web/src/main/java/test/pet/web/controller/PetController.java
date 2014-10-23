@@ -42,4 +42,8 @@ public class PetController implements Serializable {
 		this.name = name;
 	}
 	
+	public String actionDest() {
+		System.out.println("going to dest...");
+		return "dest";
+	}
 }
