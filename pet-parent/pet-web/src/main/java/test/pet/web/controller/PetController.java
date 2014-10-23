@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.ProjectStage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.apache.commons.lang3.StringUtils;
@@ -26,6 +28,8 @@ public class PetController implements Serializable {
 		if ( !StringUtils.isEmpty(name) ) {
 			System.out.println("Name: '" + name + "'");
 		}
+		ProjectStage projectStage = FacesContext.getCurrentInstance().getApplication().getProjectStage();
+		System.out.println(projectStage);
 	}
 	
 	private String name;
