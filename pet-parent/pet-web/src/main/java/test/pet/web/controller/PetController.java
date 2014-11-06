@@ -1,25 +1,34 @@
 package test.pet.web.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.application.ProjectStage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.commons.lang3.StringUtils;
 
 import test.pet.ejb.service.PetService;
 
-@SuppressWarnings("serial")
 @Named("petController")
 @SessionScoped
+@SuppressWarnings("serial")
 public class PetController implements Serializable {
 
 	@EJB
 	PetService petService;
+	
+	@Inject
+	SpeciesController speciesController;
 	
 	@PostConstruct
 	public void init() {
@@ -44,11 +53,16 @@ public class PetController implements Serializable {
 	
 	public String actionDest() {
 		System.out.println("going to dest...");
+		FacesMessage facesMessage = new FacesMessage("dest");
+		FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 		return "dest";
 	}
 
 	public String actionCreate() {
 		System.out.println("create pet...");
+		List<String> species = speciesController.getSpecies();
+		String[] array = species.toArray(new String[species.size()]);
+		System.out.println("Available species: " + Arrays.toString(array));
 		return "listPets";
 	}
 

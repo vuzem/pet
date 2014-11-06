@@ -12,6 +12,9 @@
 				<h:form>
 					<h:outputText value="#{petController.name}" />
 					<h:outputText value="pet list" />
+					<h:selectOneListbox>
+						<f:selectItems value="#{speciesController.species}"></f:selectItems>
+					</h:selectOneListbox>
 				</h:form>
 			</f:view>
 		
